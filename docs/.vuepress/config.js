@@ -13,15 +13,22 @@ module.exports = {
     sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
     lastUpdated: 'Last Updated', // 文档更新时间：每个文件git最后提交的时间
     nav: [
-      { text: '前端大杂烩', link: '/all/' }, // 内部链接 以docs为根目录
+      { text: '前端大杂烩', link: '/JS/' }, // 内部链接 以docs为根目录
       { text: 'GitHub', link: 'https://github.com/jojo51778' }
     ],
     sidebar: [
       {
-        title: '一把嗦',   // 必要的
+        title: 'Vue相关',   // 必要的
         collapsable: false, // 可选的, 默认值是 true,
         children: [
-          'all/JS/test'
+          '/JS/vue-2.0',
+          '/JS/vue-3.0',
+        ]
+      },
+      {
+        title: 'React相关',   // 必要的
+        children: [
+          '/JS/vue-2.0',
         ]
       },
     ]
