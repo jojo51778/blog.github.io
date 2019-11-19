@@ -1,6 +1,6 @@
-# Vue响应式数据原理2.0
+# Vue响应式数据原理
 
-## Object.defineProperty
+## Vue2.0 Object.defineProperty
 数据模型仅仅是普通的 `JavaScript` 对象，但是对这些对象进行操作时，却能影响对应视图，简而言之，就是`你动我也动`。
 它的核心实现就是「**响应式系统**」,核心内容为[Object.defineProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
 使用方法如下:
@@ -190,3 +190,70 @@ let o = new Vue({
 o._data.test = "hello,world.";  /* 我动了 */
 
 ```
+
+## Proxy 面向3.0的数据响应式
+
+Proxy比较简单，可直接监听对象，文档可参照[此处](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy),详细可参考阮大师的[es6 proxy](http://es6.ruanyifeng.com/#docs/proxy)
+
+具体简单实现如下:
+
+```js
+let toProxy = new WeakMap(); // 弱引用映射表 放置的是 原对象:代理过的对象
+let toRaw  = new WeakMap(); // 被代理过的对象:原对象
+function isObject(val){
+    return typeof val === 'object' && val !== null;
+}
+function hasOwn(target,key){
+    return target.hasOwnProperty(key);
+}
+// 1.响应式的核心方法
+function reactive(target){
+    // 创建响应式对象 
+    return createReativeObject(target);
+}
+// 创建响应式对象的
+function createReativeObject(target){
+    if(!isObject(target)){ // 如果当前不是对象 直接返回即可
+        return target;
+    }
+    let proxy = toProxy.get(target); // 如果已经代理过了 就将代理过的结果返回即可
+    if(proxy){
+        return proxy;
+    }
+    if(toRaw.has(target)){ // 放置代理的过的对象再次被代理
+        return target;
+    }
+    let baseHandler = { 
+        // reflect 优点 不回报错 而且 会有返回值 会替代掉Object 上的方法
+        get(target,key,receiver){
+            // proxy + reflect 反射，获取值
+            let result = Reflect.get(target,key,receiver);
+
+            return isObject(result)?reactive(result):result; // 是个递归
+        },
+        set(target,key,value,receiver){ // [1,2,3,4]
+            // 怎么去 识别是改属性 还是 新增属性
+            let hadKey = hasOwn(target,key); // 判断这个属性 以前有没有
+            let oldValue = target[key];
+            let res = Reflect.set(target,key,value,receiver);
+            if(!hadKey){
+                console.log('添加新对象');
+            }else if(oldValue !== value){ // 这里表述属性 更改过了
+                console.log('设置新对象');
+            }
+            return res;
+        },
+        deleteProperty(target,key){
+            let res = Reflect.deleteProperty(target,key)
+            console.log('删除')
+            return res;
+        }
+    }
+    let observed = new Proxy(target,baseHandler); //es6
+    toProxy.set(target,observed);
+    toRaw.set(observed,target);
+    return observed;
+}
+```
+
+很明显，对于新添加的值proxy支持的很好，不用$set也不用重写数组方法，很好的体现了优势，唯一缺点就是兼容性差，不支持ie11，未来可期，预计3.0会兼容，两个各写一套。

@@ -1,5 +1,5 @@
 module.exports = {
-  title: '前端舒服姿势',
+  title: '前端姿势',
   description: '坐上来自己动',
   // 注入到当前页面的 HTML <head> 中的标签
   head: [
@@ -21,14 +21,14 @@ module.exports = {
         title: 'Vue相关',   // 必要的
         collapsable: false, // 可选的, 默认值是 true,
         children: [
-          '/JS/vue-2.0',
-          '/JS/vue-3.0',
+          '/JS/vue/vue-obeserve',
+          '/JS/vue/vue-dep',
         ]
       },
       {
         title: 'React相关',   // 必要的
         children: [
-          '/JS/vue-2.0',
+          '/JS/react/redux',
         ]
       },
     ]
