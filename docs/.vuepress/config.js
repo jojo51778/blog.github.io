@@ -27,8 +27,18 @@ module.exports = {
       },
       {
         title: 'React相关',   // 必要的
+        collapsable: false, 
         children: [
-          '/JS/react/redux',
+          // '/JS/react/redux',
+        ]
+      },
+      {
+        title: '面试葵花宝典',   // 必要的
+        collapsable: false, 
+        children: [
+          '/JS/interview/html',
+          '/JS/interview/css',
+          '/JS/interview/javascript',
         ]
       },
     ]
