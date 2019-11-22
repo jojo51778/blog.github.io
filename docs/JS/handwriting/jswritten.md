@@ -8,7 +8,7 @@
 const debounce = (fn, delay) => {
   let timer = null;
   return (...args) => {
-    //再次进来就清楚定时器
+    //再次进来就清除定时器
     clearTimeout(timer);
     timer = setTimeout(() => {
       fn.apply(this, args);
