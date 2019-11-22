@@ -41,6 +41,13 @@ module.exports = {
           '/JS/interview/javascript',
         ]
       },
+      {
+        title: '手写一个？？？',   // 必要的
+        collapsable: false, 
+        children: [
+          '/JS/handwriting/jswritten',
+        ]
+      },
     ]
   }
 }
