@@ -48,6 +48,13 @@ module.exports = {
           '/JS/handwriting/jswritten',
         ]
       },
+      {
+        title: '重在积累',   // 必要的
+        collapsable: false, 
+        children: [
+          '/JS/knowledge/30s',
+        ]
+      },
     ]
   }
 }
