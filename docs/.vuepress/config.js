@@ -29,7 +29,7 @@ module.exports = {
         title: 'React相关',   // 必要的
         collapsable: false, 
         children: [
-          // '/JS/react/redux',
+          '/JS/react/hooks',
         ]
       },
       {
