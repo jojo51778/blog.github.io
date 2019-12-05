@@ -307,4 +307,74 @@ var child = new Child('cxk', 'father');
 child.say() // father好，我是练习时长两年半的cxk
 ```
 
-## 实现event bus，实现Promise
+## 实现event bus
+
+现在众多框架都有event通信方式，大多来处理非父子组件，node也有相关实现。
+
+#### 初始化class
+
+```js
+class EventEmeitter {
+  constructor() {
+    this._events = this._events || new Map(); //存储事件 ,Map有get，set,has,delete等方法
+    this._maxListeners = this._maxListeners || 10; // 监听上限
+  }
+}
+
+```
+
+监听/触发多个事件
+
+```js
+// 监听
+EventEmeitter.prototype.addListener = function(type, fn) {
+  let handler = this._events.get(type);
+  // 存储
+  if (!handler) {
+    this._events.set(type, fn);
+  } else if (handler && typeof handler === 'function') {
+    this._events.set(type, [handler, fn]); // 用数组存起来
+  } else {
+    handler.push(fn); //超过两个直接push
+  }
+}
+
+// 触发
+EventEmeitter.prototype.emit = function(type, ...args) {
+  let handler = this._events.get(type);
+  if (Array.isArray(handler)) {
+    handler.map(fn => {
+      if (args.length > 0) {
+        fn.apply(this, args);
+      } else {
+        fn.call(this);
+      }
+    })
+  } else {
+    if (args.length > 0) {
+      handler.apply(this, args);
+    } else {
+      handler.call(this);
+    }
+  }
+}
+```
+接下来测试一下
+
+```js
+const emitter = new EventEmeitter()
+// 只会触发一个
+emitter.addListener('dio', man => {
+  console.log(`dio and ${man}`)
+})
+
+emitter.addListener('dio', man => {
+  console.log(`dio ${man}`)
+})
+
+emitter.emit('dio', 'jojo')
+// dio and jojo
+// dio jojo
+```
+
+## 实现Promise

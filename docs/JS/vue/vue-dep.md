@@ -4,7 +4,7 @@
 
 如下图：
 
-![依赖收集](https://user-gold-cdn.xitu.io/2018/1/5/160c4572fdd738f2?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![依赖收集](/yilaishouji.webp)
 
 ## 订阅者Dep
 
