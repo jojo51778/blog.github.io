@@ -1,6 +1,6 @@
 ## hooks原理
 
-#### 初级版
+## useState原理
 ```js
 function useState(initialValue) {
   let _val = initialValue // 初始值
