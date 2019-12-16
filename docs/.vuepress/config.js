@@ -61,6 +61,7 @@ module.exports = {
         children: [
           '/JS/http/tcpip',
           '/JS/http/httpstatus',
+          '/JS/http/http',
         ]
       },
       // {
