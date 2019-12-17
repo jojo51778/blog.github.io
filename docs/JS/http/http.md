@@ -1,3 +1,27 @@
+## http报文首部
+![报文首部](/httpheader.jpg)
+#### 通用首部字段
+![通用首部字段](/generalfield.jpg)
+#### 实体首部字段
+![实体首部字段](/entityfield.jpg)
+### HTTP请求报文
+在请求中，HTTP报文由方法、URL、HTTP版本、HTTP首部字段等部分构成
+
+![请求报文](/requestheader.jpg)
+#### 请求首部字段
+![请求首部字段](/requestfield.jpg)
+### HTTP响应报文
+在响应中，HTTP报文由HTTP版本、状态码（数字和原因短语）、HTTP首部字段3部分组成
+
+![响应报文](/responseheader.jpg)
+#### 响应首部字段
+![请求首部字段](/responsefiled.jpg)
+
+### 缓存请求指令
+![缓存请求指令](/requestcache.jpg)
+### 缓存响应指令
+![缓存响应指令](/responsecache.jpg)
+
 ## 与HTTP协作的Web服务器
 
 一台Web服务器可以搭建多个独立域名的Web网站，也可以作为通信路径的中转服务器提升传输效率

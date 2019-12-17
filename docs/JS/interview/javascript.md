@@ -9,6 +9,7 @@
 - number
 - string
 - symbol
+
 引用类型:
 - Object
 
