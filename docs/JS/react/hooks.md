@@ -1,5 +1,3 @@
-## hooks原理
-
 ## useState原理
 ```js
 function useState(initialValue) {
