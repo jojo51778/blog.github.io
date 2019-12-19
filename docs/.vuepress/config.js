@@ -62,6 +62,7 @@ module.exports = {
           '/JS/http/tcpip',
           '/JS/http/httpstatus',
           '/JS/http/http',
+          '/JS/http/httpsecure',
         ]
       },
       // {
