@@ -8,7 +8,7 @@ const debounce = (fn, delay) => {
   };
 };
 
-function handleFangDou(){
+function handleFangDou(){ 
   console.log("不要抖",new Date());
 }
 
