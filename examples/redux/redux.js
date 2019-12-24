@@ -168,4 +168,21 @@ function counterReducer(state, action) {
 // });
 
 let store = createStore(counterReducer);
-console.dir(store.getState());
+const next = store.dispatch
+
+
+// 重写dispatch
+store.dispatch = action => {
+	try {
+		console.log('this state', store.getState());
+    console.log('action', action);
+    next(action);
+    console.log('next state', store.getState());
+	} catch (err) {
+		console.error('错误报告', err)
+	}
+}
+
+store.dispatch({
+  type: 'INCREMENT'
+});
