@@ -63,6 +63,7 @@ module.exports = {
           '/JS/http/httpstatus',
           '/JS/http/http',
           '/JS/http/httpsecure',
+          '/JS/http/userAuth',
         ]
       },
       // {
