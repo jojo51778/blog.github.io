@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clearfix</title>
+    <style>
+        .clearfix {
+            border: 1px solid #ccc;
+            background: #fc9;color: #fff;
+            margin: 50px auto;
+            padding: 50px;
+            width: 1000px;
+            /* 方案4 */
+            overflow: auto;
+            /* zoom: 1; 兼容 */
+        }
+        /* 方案1 */
+        /* .clearfix:after {
+            clear: both;
+            content: '';
+            display: block;
+        } */
+        .floated {
+            float: left;
+            width: 80px;
+            height: 80px;
+        }
+        /* 方案2 */
+        /* .clear {
+            clear: both;
+            height: 0;
+            line-height: 0;
+            font-size: 0;
+        } */
+    </style>
+</head>
+<body>
+    <div class="clearfix">
+        <div class="floated" style="background: rgb(234, 0, 255);">float a</div>
+        <div class="floated" style="background: black;">float b</div>
+        <div class="floated" style="background: green;">float c</div>
+        <!-- <div class='clear'> -->
+        <!-- 方案3 原理其实一样与方案2-->
+        <!-- <br style="clear: both;"> -->
+    </div>
+</body>
+</html>
