@@ -34,10 +34,8 @@ function removeCookie(name) {
   }
 }
 
-let CookieManager = {
+export {
   setCookie,
   getCookies,
   removeCookie
-};
-
-export CookieManager
+}

@@ -22,3 +22,13 @@ const c = { key: 'c' }
 a[b] = 123
 a[c] = 456
 console.log(a[b])
+
+
+let arr = [{id: 1, price: null},{id: 1, price: 100},{id: 2, price: null},{id: 2, price: 100}]
+arr.reduce((init, current) => {
+    if(init.length === 0 || init[init.length-1].id !== current.id && current.price !== null) {
+        init.push(current);
+    }
+    return init;
+}, [])
+

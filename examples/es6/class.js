@@ -75,7 +75,7 @@ const fooPrint = new foo.print(); // TypeError: foo.print is not a constructor
 // 必须要用new调用class
 function Bar() {
   this.bar = 42;
-}
+}  
 const bar = Bar(); // it's ok
 
 class Foo {
@@ -85,7 +85,7 @@ class Foo {
 }
 const foo = Foo(); // TypeError: Class constructor Foo cannot be invoked without 'new'
 // class内部无法重新类名
-function Bar() {
+function Bar() {                                                                                
   Bar = "Baz"; // it's ok
   this.bar = 42;
 }
