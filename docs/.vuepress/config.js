@@ -33,6 +33,13 @@ module.exports = {
         ]
       },
       {
+        title: 'webPack',   // 必要的
+        collapsable: false, 
+        children: [
+          '/JS/webpack/optimization',
+        ]
+      },
+      {
         title: '面试葵花宝典',   // 必要的
         collapsable: false, 
         children: [
